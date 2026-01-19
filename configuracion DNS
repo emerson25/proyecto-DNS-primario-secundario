@@ -1,0 +1,32 @@
+DNS PRINCIPAL:
+
+sudo nano /etc/bind/named.conf.local
+
+zone "baf.com" {
+    type master;
+    file "/etc/bind/db.baf.com";
+    allow-transfer { 192.168.119.131; };
+};
+
+zone "119.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192.168.119";
+    allow-transfer { 192.168.119.131; };
+};
+
+
+sudo nano /etc/bind/db.baf.com
+
+@   IN  SOA dns-primary.baf.com. admin.baf.com. (
+        2026011902 ; Serial
+        604800
+        86400
+        2419200
+        604800 )
+
+@               IN  NS  dns-primary.baf.com.
+@               IN  NS  dns-secondary.baf.com.
+
+dns-primary     IN  A   192.168.119.130
+dns-secondary   IN  A   192.168.119.131
+www             IN  A   192.168.119.130
