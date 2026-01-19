@@ -1,0 +1,13 @@
+DNS PRIMARIO:
+#sudo nano /etc/netplan/00-installer-config.yaml
+
+network:
+  version: 2
+  ethernets:
+    ens33:
+      addresses:
+        - 192.168.119.130/24
+      dhcp4: no
+
+    ens37:
+      dhcp4: yes
