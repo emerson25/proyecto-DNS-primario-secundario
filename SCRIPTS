@@ -11,3 +11,16 @@ network:
 
     ens37:
       dhcp4: yes
+
+Secundario:
+
+network:
+  version: 2
+  ethernets:
+    ens33:
+      addresses:
+        - 192.168.119.131/24
+      dhcp4: no
+
+    ens37:
+       dhcp4: yes
