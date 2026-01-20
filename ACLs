@@ -1,0 +1,19 @@
+#sudo nano /etc/bind/named.conf.options
+
+acl "red-interna" {
+    192.168.119.0/24;
+    localhost;
+};
+
+options {
+    directory "/var/cache/bind";
+
+    recursion yes;
+    allow-query { red-interna; };
+    allow-recursion { red-interna; };
+
+    listen-on { any; };
+    listen-on-v6 { none; };
+
+    dnssec-validation auto;
+};
