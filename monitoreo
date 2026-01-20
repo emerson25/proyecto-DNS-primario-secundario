@@ -1,0 +1,26 @@
+sudo tail -f /var/log/named/bind.log
+
+
+zone "baf.com" {
+    type master;
+    file "/etc/bind/db.baf.com";
+    allow-transfer { 192.168.119.131; };
+};
+
+zone "119.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192.168.119";
+    allow-transfer { 192.168.119.131; };
+};
+
+logging {
+    channel default_log {
+        file "/var/log/named/bind.log";
+        severity info;
+        print-time yes;
+    };
+
+    category default { default_log; };
+    category queries { default_log; };
+};
+
