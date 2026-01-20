@@ -1,0 +1,14 @@
+DNS SECUNDARIO:
+#sudo nano /etc/bind/named.conf.local
+
+zone "baf.com" {
+    type slave;
+    masters { 192.168.119.130; };
+    file "/var/cache/bind/db.baf.com";
+};
+
+zone "119.168.192.in-addr.arpa" {
+    type slave;
+    masters { 192.168.119.130; };
+    file "/var/cache/bind/db.192.168.119";
+};
