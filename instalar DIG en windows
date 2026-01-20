@@ -1,0 +1,5 @@
+instalar DIG en windows
+
+1. buscar en CMD administrador, "winget search bind"
+2. instalar el paquete bind, "wintet install (ID)"
+3 reiniciar cMD
