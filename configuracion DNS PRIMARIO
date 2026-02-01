@@ -14,21 +14,6 @@ zone "119.168.192.in-addr.arpa" {
     allow-transfer { 192.168.119.131; };
 };
 
-//zona inversa
-#nano /etc/bind/db.192.168.119
-$TTL 604800
-@   IN  SOA dns-primary.baf.com. admin.baf.com. (
-        2026012001 ; Serial
-        604800
-        86400
-        2419200
-        604800 )
-
-@       IN  NS  dns-primary.baf.com.
-@       IN  NS  dns-secondary.baf.com.
-
-130     IN  PTR dns-primary.baf.com.
-131     IN  PTR dns-secondary.baf.com.
 
 //zona directa
 #sudo nano /etc/bind/db.baf.com
@@ -46,6 +31,25 @@ $TTL 604800
 dns-primary     IN  A   192.168.119.130
 dns-secondary   IN  A   192.168.119.131
 www             IN  A   192.168.119.130
+
+
+
+//zona inversa
+#nano /etc/bind/db.192.168.119
+$TTL 604800
+@   IN  SOA dns-primary.baf.com. admin.baf.com. (
+        2026012001 ; Serial
+        604800
+        86400
+        2419200
+        604800 )
+
+@       IN  NS  dns-primary.baf.com.
+@       IN  NS  dns-secondary.baf.com.
+
+130     IN  PTR dns-primary.baf.com.
+131     IN  PTR dns-secondary.baf.com.
+
 
 
 finalmente validar para el inverso:
